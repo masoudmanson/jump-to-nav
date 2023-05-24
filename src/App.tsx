@@ -1,18 +1,13 @@
-import React, { useRef, useState } from "react";
-import { InputSlider, NavigationJumpTo } from "@czi-sds/components";
-
-import "./index.css";
+/* eslint-disable react/display-name */
+import { NavigationJumpTo } from "@czi-sds/components";
 import { TabPanelProps } from "@mui/base";
 import { Box } from "@mui/material";
+import React, { useRef } from "react";
+import "./index.css";
 
-interface TabPanelPropsExtra extends TabPanelProps {
-  index: number;
-  sdsDemoHeight: number;
-}
-
-const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
+const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
   (props, ref) => {
-    const { children, sdsDemoHeight, ...other } = props;
+    const { children, ...other } = props;
 
     return (
       <div
@@ -20,24 +15,21 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
         role="tabpanel"
         style={{
           alignItems: "center",
-          backgroundColor: "#f4f4f4",
           color: "black",
           display: "flex",
           fontFamily: "Open Sans, sans-serif",
-          fontSize: "36px",
+          fontSize: "16px",
           fontWeight: 100,
           justifyContent: "center",
           margin: "0px 22px 22px 6px",
-          minHeight: `${sdsDemoHeight}vh`,
-          textAlign: "center",
+          padding: "0 15px 10px",
+          textAlign: "left",
         }}
         {...other}
       >
         <Box sx={{ p: 3 }}>
+          <h2 className="title">Section Title</h2>
           {children}
-          <p style={{ fontSize: 14, margin: "5px 0 0 0" }}>
-            height: {sdsDemoHeight} vh
-          </p>
         </Box>
       </div>
     );
@@ -45,7 +37,6 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
 );
 
 const App = () => {
-  const [navPanelHeight, setNavPanelHeight] = useState(100);
   const sectionRef0 = useRef(null);
   const sectionRef1 = useRef(null);
   const sectionRef2 = useRef(null);
@@ -63,37 +54,9 @@ const App = () => {
       <Box>
         <Box
           sx={{
-            fontFamily: "Open Sans, sans-serif",
-            margin: "0 0 30px 6px",
-            width: 250,
-          }}
-        >
-          <p id="nav-item-height-slider" style={{ marginBottom: "5px" }}>
-            Section panel height:
-          </p>
-          <InputSlider
-            aria-labelledby="nav-item-height-slider"
-            min={20}
-            max={120}
-            step={10}
-            onChange={(_, value) => {
-              setNavPanelHeight(value as number);
-            }}
-            defaultValue={100}
-            marks={[
-              { label: "20", value: 20 },
-              { label: "40", value: 40 },
-              { label: "60", value: 60 },
-              { label: "80", value: 80 },
-              { label: "100", value: 100 },
-              { label: "120", value: 120 },
-            ]}
-          />
-        </Box>
-        <Box
-          sx={{
             display: "flex",
             flexDirection: "row-reverse",
+            position: "relative",
             width: "100%",
           }}
         >
@@ -106,48 +69,107 @@ const App = () => {
                 { elementRef: sectionRef3, title: "Section 4" },
                 { elementRef: sectionRef4, title: "Section 5" },
               ]}
+              offsetTop={5}
             />
           </Box>
-          <Box sx={{ width: "100%" }}>
-            <TabPanel
-              id="panel-01"
-              index={0}
-              ref={sectionRef0}
-              sdsDemoHeight={navPanelHeight}
-            >
-              Section #1
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+            }}
+          >
+            <TabPanel id="nav-panel-1" ref={sectionRef0}>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Laboriosam minus quaerat, at alias culpa perspiciatis eius illo
+                accusamus molestiae dolorum inventore unde id quo minima cum
+                aliquam quos asperiores temporibus.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
+                odit, distinctio veniam eius ut porro dicta explicabo quisquam
+                nisi aspernatur alias fugiat provident, at beatae saepe quod
+                tenetur officia repudiandae.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Adipisci tempora rem placeat nulla commodi officiis quo harum
+                fugit sunt cum soluta eos sed eligendi illo consequuntur
+                architecto, ex temporibus fuga!
+              </p>
             </TabPanel>
-            <TabPanel
-              id="panel-02"
-              index={1}
-              ref={sectionRef1}
-              sdsDemoHeight={navPanelHeight}
-            >
-              Section #2
+            <TabPanel id="nav-panel-2" ref={sectionRef1}>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Dolore, iusto cumque consequuntur fugit distinctio sequi atque
+                possimus amet dolor porro eius totam provident aliquid? Sequi
+                facere esse itaque quos dolore.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+                facilis molestias laudantium, facere ratione incidunt, corporis
+                mollitia id voluptas autem iste hic nobis quos natus tenetur
+                placeat? Quae, aliquam nostrum?
+              </p>
             </TabPanel>
-            <TabPanel
-              id="panel-03"
-              index={2}
-              ref={sectionRef2}
-              sdsDemoHeight={navPanelHeight}
-            >
-              Section #3
+            <TabPanel id="nav-panel-3" ref={sectionRef2}>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+                omnis ducimus a aperiam quo harum nesciunt repudiandae, odit id
+                rem tenetur vero impedit. Asperiores cum reiciendis aperiam
+                consectetur eum? Unde!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Expedita deserunt rerum soluta exercitationem ducimus totam,
+                minus delectus quibusdam, perferendis sunt tempore excepturi
+                perspiciatis! Numquam, facere omnis commodi autem perferendis
+                odit?
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Distinctio ullam nulla aliquid repudiandae, voluptatem fugit ad
+                quae dolor quidem eius in sapiente, fugiat voluptas vero animi
+                sint adipisci, quas facere.
+              </p>
             </TabPanel>
-            <TabPanel
-              id="panel-04"
-              index={3}
-              ref={sectionRef3}
-              sdsDemoHeight={navPanelHeight}
-            >
-              Section #4
+            <TabPanel id="nav-panel-4" ref={sectionRef3}>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+                possimus voluptatibus ad officiis. Modi, voluptatibus quibusdam
+                cumque rerum ad dolorum reiciendis nihil dolores saepe similique
+                quod omnis, maxime illo quasi?
+              </p>
             </TabPanel>
-            <TabPanel
-              id="panel-05"
-              index={4}
-              ref={sectionRef4}
-              sdsDemoHeight={navPanelHeight}
-            >
-              Section #5
+            <TabPanel id="nav-panel-5" ref={sectionRef4}>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptate consequuntur corporis nihil nostrum, iusto sequi
+                dolorem! Quas libero, voluptatem adipisci quis soluta quidem
+                fugiat, optio officiis asperiores tempora, dolorum iusto! Lorem
+                ipsum dolor, sit amet consectetur adipisicing elit. Dolorem
+                maxime possimus aliquid non porro eius aspernatur consequatur
+                nihil voluptatem ducimus quo, esse saepe. Excepturi, nostrum
+                libero odio cumque consequatur reiciendis!
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Pariatur corrupti deleniti totam architecto debitis blanditiis
+                itaque beatae, est quo adipisci quaerat repellat alias quis
+                animi asperiores magni corporis perspiciatis accusantium.
+              </p>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil,
+                officiis sed cum voluptatum quidem iure ipsam. Officia, libero
+                voluptatum dolorum consequatur ratione facere necessitatibus
+                molestiae delectus ducimus! Eaque, fugiat laborum!
+              </p>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam ad
+                totam dolore officiis impedit exercitationem eaque tempora
+                quasi, eos, nisi sunt illum tenetur temporibus distinctio
+                obcaecati iste dolores, consequuntur nesciunt.
+              </p>
             </TabPanel>
           </Box>
         </Box>
