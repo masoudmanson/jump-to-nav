@@ -27,13 +27,10 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
         }}
         {...other}
       >
-        <Box sx={{ p: 3 }}>
-          <h2 className="title">Section Title</h2>
-          {children}
-        </Box>
+        <Box sx={{ p: 3 }}>{children}</Box>
       </div>
     );
-  },
+  }
 );
 
 const App = () => {
@@ -79,6 +76,7 @@ const App = () => {
             }}
           >
             <TabPanel id="nav-panel-1" ref={sectionRef0}>
+              <h2 className="title">Section 1</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Laboriosam minus quaerat, at alias culpa perspiciatis eius illo
@@ -99,6 +97,7 @@ const App = () => {
               </p>
             </TabPanel>
             <TabPanel id="nav-panel-2" ref={sectionRef1}>
+              <h2 className="title">Section 2</h2>
               <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Dolore, iusto cumque consequuntur fugit distinctio sequi atque
@@ -113,6 +112,7 @@ const App = () => {
               </p>
             </TabPanel>
             <TabPanel id="nav-panel-3" ref={sectionRef2}>
+              <h2 className="title">Section 3</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
                 omnis ducimus a aperiam quo harum nesciunt repudiandae, odit id
@@ -134,6 +134,7 @@ const App = () => {
               </p>
             </TabPanel>
             <TabPanel id="nav-panel-4" ref={sectionRef3}>
+              <h2 className="title">Section 4</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
                 possimus voluptatibus ad officiis. Modi, voluptatibus quibusdam
@@ -142,6 +143,7 @@ const App = () => {
               </p>
             </TabPanel>
             <TabPanel id="nav-panel-5" ref={sectionRef4}>
+              <h2 className="title">Section 5</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptate consequuntur corporis nihil nostrum, iusto sequi
